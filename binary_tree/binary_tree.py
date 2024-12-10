@@ -48,10 +48,10 @@ def search(node, key):
     return search(node.right, key) # se for maior, busca na direita
 
 def display_tree(current_node, level=0):
-    if current_node is not None:
-        display_tree(current_node.right, level + 1)
-        indent = ' ' * 4 * level
+    if current_node is not None: # continua se o nó atual não for nulo
+        display_tree(current_node.right, level + 1) # exibe o lado direito
+        indent = ' ' * 4 * level # cria identacao para o nivel atual
 
         print(f'{indent}→ {current_node.value}')
 
-        display_tree(current_node.left, level + 1)
+        display_tree(current_node.left, level + 1) # exibe o lado esquerdo
