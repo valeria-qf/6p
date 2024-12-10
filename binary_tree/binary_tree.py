@@ -5,15 +5,16 @@ class Node:
         self.right = None
 def insert(node, key):
     if node is None:
-        return Node(key)  # Create a new node if none exists.
+        return Node(key)  # cria um novo
     
-    if key < node.value:
-        node.left = insert(node.left, key)  # Insert on the left subtree.
-    elif key > node.value:
-        node.right = insert(node.right, key)  # Insert on the right subtree.
+    if key < node.value: # se o valor inserido for menor que o valor do nó atual
+        node.left = insert(node.left, key)
+
+    elif key > node.value: # maior que o valor do nó atual
+        node.right = insert(node.right, key)
     else:
         print('Value already exists in tree')
-    return node  # Make sure to return the node to update the tree.
+    return node 
 
 def count_nodes(node):
     if node is None:
@@ -21,7 +22,7 @@ def count_nodes(node):
     
     left_nodes = count_nodes(node.left)
     right_nodes = count_nodes(node.right)
-    total_nodes = left_nodes + right_nodes + 1
+    total_nodes = left_nodes + right_nodes + 1 # soma com o nó atual
 
     return total_nodes
 
@@ -29,7 +30,7 @@ def count_leaves(node):
     if node is None:
         return 0
     
-    if node.left is None and node.right is None:
+    if node.left is None and node.right is None: # verifica se não tem filhos(folha)
         return 1
     
     left_leaves = count_leaves(node.left)
@@ -42,9 +43,9 @@ def search(node, key):
     if node is None or node.value == key:
         return node
 
-    if key < node.value:
+    if key < node.value: # se o valor buscado for maior que o valor do nó atual, busca na esquerda
         return search(node.left, key)
-    return search(node.right, key)
+    return search(node.right, key) # se for maior, busca na direita
 
 def display_tree(current_node, level=0):
     if current_node is not None:
